@@ -80,7 +80,17 @@
   }
 
   /* ── 日程テーブル ── */
-  .table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .table-wrap{ position:relative; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  /* 横スクロールの目印（スマホ） */
+  .scroll-hint{
+    display:none; align-items:center; justify-content:flex-end; gap:5px;
+    font-family:"Zen Kaku Gothic New",sans-serif; font-size:12.5px; font-weight:700;
+    color:var(--ai); margin:2px 2px 8px; letter-spacing:.02em; transition:opacity .4s ease;
+  }
+  .scroll-hint .arrow{ color:var(--kin-accent); font-size:15px; line-height:1;
+    animation:hintSlide 1.25s ease-in-out infinite; }
+  @keyframes hintSlide{ 0%,100%{ transform:translateX(0); opacity:.5; } 50%{ transform:translateX(6px); opacity:1; } }
+  @media(max-width:720px){ .scroll-hint{ display:flex; } }
   table{ width:100%; border-collapse:collapse; min-width:680px; }
   thead th{
     font-family:"Shippori Mincho",serif;
@@ -203,6 +213,7 @@
   </header>
 
   <div class="head"><span class="mark"></span><h2>開催日程</h2></div>
+  <div class="scroll-hint">横にスクロールできます<span class="arrow">→</span></div>
   <div class="table-wrap">
     <table>
       <thead>
@@ -291,5 +302,11 @@
   <footer>六層連動操法　東京7,8期 卒後セミナー</footer>
 
 </div>
+<script>
+  (function(){
+    var w=document.querySelector('.table-wrap'), h=document.querySelector('.scroll-hint');
+    if(w&&h){ w.addEventListener('scroll', function(){ h.style.opacity='0'; setTimeout(function(){ h.style.display='none'; },450); }, { once:true, passive:true }); }
+  })();
+</script>
 </body>
 </html>
