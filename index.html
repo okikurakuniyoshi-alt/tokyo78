@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東京7,8期 卒後セミナー スケジュール表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sumi:#161310;        /* 墨 */
+    --sumi-soft:#2b2722;   /* 濃いめの墨（本文補足） */
+    --ai:#1f3a5f;          /* 藍 */
+    --ai-deep:#142b48;
+    --ai-tint:#e7edf4;
+    --kin:#8a6a1c;         /* 金（文字用：濃く） */
+    --kin-accent:#b8943f;  /* 金（装飾用） */
+    --kin-soft:#f0d28a;    /* 金（藍背景上の明るい文字） */
+    --washi:#f7f3ea;       /* 和紙 */
+    --washi-card:#fffdf8;
+    --line:#cabfa8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    background:var(--washi);
+    color:var(--sumi);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    padding:28px 18px 48px;
+  }
+  .sheet{
+    max-width:880px;
+    margin:0 auto;
+    background:var(--washi-card);
+    border:1px solid var(--line);
+    border-top:4px solid var(--ai-deep);
+    box-shadow:0 10px 40px rgba(31,28,26,.08);
+    padding:40px 38px 44px;
+  }
+
+  /* ── ヘッダー ── */
+  header{
+    text-align:center;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .eyebrow{
+    font-family:"Shippori Mincho",serif;
+    font-size:13px; letter-spacing:.55em;
+    color:var(--kin); font-weight:700;
+    padding-left:.55em;
+  }
+  h1{
+    font-family:"Shippori Mincho",serif;
+    font-weight:800;
+    font-size:clamp(24px,5.5vw,34px);
+    color:var(--sumi);
+    margin:10px 0 6px;
+    letter-spacing:.04em;
+  }
+  .sub{
+    font-size:13px; color:var(--sumi); font-weight:500; letter-spacing:.08em;
+  }
+
+  /* ── セクション見出し ── */
+  .head{
+    display:flex; align-items:center; gap:12px;
+    margin:34px 0 16px;
+  }
+  .head .mark{
+    width:6px; height:20px; background:var(--kin); border-radius:1px;
+  }
+  .head h2{
+    font-family:"Shippori Mincho",serif;
+    font-size:18px; font-weight:700; color:var(--ai-deep);
+    letter-spacing:.08em;
+  }
+
+  /* ── 日程テーブル ── */
+  .table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table{ width:100%; border-collapse:collapse; min-width:680px; }
+  thead th{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700; font-size:13.5px;
+    background:var(--ai-deep); color:#fff;
+    padding:11px 8px; text-align:center;
+    letter-spacing:.05em;
+  }
+  thead th .wd{ display:block; font-size:11.5px; color:var(--kin-soft); font-weight:700; margin-top:3px; letter-spacing:.1em;}
+  thead th:first-child{ background:var(--sumi); width:74px;}
+  tbody td{
+    padding:11px 8px; text-align:center; font-size:14px;
+    color:var(--sumi); font-weight:500;
+    border-bottom:1px solid var(--line);
+    font-variant-numeric:tabular-nums;
+  }
+  tbody tr:nth-child(even) td{ background:var(--ai-tint);}
+  .kai{
+    font-family:"Shippori Mincho",serif; font-weight:700;
+    color:#fff; background:var(--ai); font-size:13px;
+    letter-spacing:.04em;
+  }
+  tbody tr:nth-child(even) .kai{ background:var(--ai-deep);}
+  .yr{ color:var(--kin); font-weight:700; font-size:12px; }
+
+  /* ── 内容 ── */
+  .note{
+    font-size:14px; color:var(--sumi); font-weight:500; line-height:1.9;
+    background:var(--ai-tint);
+    border-left:4px solid var(--kin-accent);
+    padding:14px 18px; border-radius:2px;
+  }
+
+  /* ── 受講料 ── */
+  .fees{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .fee{
+    border:1px solid var(--line); border-radius:4px;
+    padding:18px 20px 20px; background:var(--washi-card);
+    position:relative;
+  }
+  .fee.full{ border-color:var(--kin-accent); box-shadow:0 4px 16px rgba(184,148,63,.20);}
+  .fee.full::before{
+    content:"おすすめ"; position:absolute; top:-11px; right:14px;
+    background:var(--kin-accent); color:#fff; font-size:11px; font-weight:700;
+    padding:3px 10px; border-radius:10px; letter-spacing:.1em;
+    font-family:"Shippori Mincho",serif;
+  }
+  .fee .label{
+    font-family:"Shippori Mincho",serif; font-weight:700;
+    font-size:16px; color:var(--ai-deep); letter-spacing:.04em;
+  }
+  .fee .price{
+    font-family:"Shippori Mincho",serif; font-weight:800;
+    font-size:27px; color:var(--sumi); margin:6px 0 2px;
+  }
+  .fee .price small{ font-size:14px; font-weight:600; color:var(--sumi);}
+  .fee .tax{ font-size:11.5px; color:var(--kin); font-weight:700; letter-spacing:.08em; }
+  .fee .desc{ font-size:13px; color:var(--sumi); font-weight:500; margin-top:10px; line-height:1.75; }
+
+  /* ── 申込みボタン ── */
+  .cta-wrap{ margin-top:30px; text-align:center; }
+  .cta-lead{
+    font-family:"Shippori Mincho",serif; font-size:14px; font-weight:600;
+    color:var(--ai-deep); letter-spacing:.08em; margin-bottom:14px;
+  }
+  .cta-btn{
+    display:inline-block; text-decoration:none;
+    font-family:"Shippori Mincho",serif; font-weight:700;
+    font-size:18px; letter-spacing:.12em;
+    color:#fff; background:var(--ai-deep);
+    padding:16px 52px; border-radius:4px;
+    border:1.5px solid var(--ai-deep);
+    box-shadow:0 6px 18px rgba(20,43,72,.28);
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .cta-btn:hover,.cta-btn:focus-visible{
+    background:var(--kin-accent); border-color:var(--kin-accent);
+    box-shadow:0 8px 22px rgba(184,148,63,.40);
+    transform:translateY(-2px);
+  }
+  .cta-note{
+    font-size:12px; color:var(--sumi-soft); margin-top:12px; letter-spacing:.04em;
+  }
+
+  footer{
+    margin-top:30px; padding-top:16px; border-top:1px solid var(--line);
+    text-align:center; font-size:12px; color:var(--sumi-soft); font-weight:500; letter-spacing:.1em;
+  }
+
+  @media(max-width:560px){
+    body{ padding:14px 8px 30px;}
+    .sheet{ padding:26px 18px 30px;}
+    .fees{ grid-template-columns:1fr; }
+  }
+  @media print{
+    body{ background:#fff; padding:0;}
+    .sheet{ box-shadow:none; border:none; max-width:100%; padding:10px 14px;}
+    @page{ size:A4; margin:9mm 11mm; }
+    header{ padding-bottom:14px; }
+    h1{ margin:7px 0 4px; }
+    .head{ margin:14px 0 10px; }
+    thead th{ padding:8px 6px; font-size:12px; }
+    table{ min-width:0; }
+    tbody td{ padding:7px 6px; font-size:12px; }
+    .note{ padding:11px 16px; line-height:1.7; }
+    .fees{ gap:14px; }
+    .fee{ padding:13px 18px 14px; }
+    .fee .price{ font-size:25px; }
+    footer{ margin-top:11px; padding-top:9px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div class="eyebrow">六層連動操法</div>
+    <h1>東京 7,8期 卒後セミナー</h1>
+    <div class="sub">スケジュール表　2026年8月 — 2027年7月</div>
+  </header>
+
+  <div class="head"><span class="mark"></span><h2>開催日程</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>回数</th>
+          <th>東京A<span class="wd">日曜開催</span></th>
+          <th>大阪B<span class="wd">金曜開催</span></th>
+          <th>東京C<span class="wd">火曜開催</span></th>
+          <th>東京D<span class="wd">水曜開催</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="kai">第1回</td>
+          <td><span class="yr">2026</span><br>8月9日(日)</td>
+          <td><span class="yr">2026</span><br>8月28日(金)</td>
+          <td><span class="yr">2026</span><br>9月15日(火)</td>
+          <td><span class="yr">2026</span><br>9月16日(水)</td>
+        </tr>
+        <tr>
+          <td class="kai">第2回</td>
+          <td><span class="yr">2026</span><br>10月11日(日)</td>
+          <td><span class="yr">2026</span><br>10月23日(金)</td>
+          <td><span class="yr">2026</span><br>11月17日(火)</td>
+          <td><span class="yr">2026</span><br>11月18日(水)</td>
+        </tr>
+        <tr>
+          <td class="kai">第3回</td>
+          <td><span class="yr">2026</span><br>12月13日(日)</td>
+          <td><span class="yr">2026</span><br>12月25日(金)</td>
+          <td><span class="yr">2027</span><br>1月19日(火)</td>
+          <td><span class="yr">2027</span><br>1月20日(水)</td>
+        </tr>
+        <tr>
+          <td class="kai">第4回</td>
+          <td><span class="yr">2027</span><br>2月14日(日)</td>
+          <td><span class="yr">2027</span><br>2月26日(金)</td>
+          <td><span class="yr">2027</span><br>3月16日(火)</td>
+          <td><span class="yr">2027</span><br>3月17日(水)</td>
+        </tr>
+        <tr>
+          <td class="kai">第5回</td>
+          <td><span class="yr">2027</span><br>4月11日(日)</td>
+          <td><span class="yr">2027</span><br>4月23日(金)</td>
+          <td><span class="yr">2027</span><br>5月18日(火)</td>
+          <td><span class="yr">2027</span><br>5月19日(水)</td>
+        </tr>
+        <tr>
+          <td class="kai">第6回</td>
+          <td><span class="yr">2027</span><br>6月13日(日)</td>
+          <td><span class="yr">2027</span><br>6月25日(金)</td>
+          <td><span class="yr">2027</span><br>7月20日(火)</td>
+          <td><span class="yr">2027</span><br>7月21日(水)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="head"><span class="mark"></span><h2>セミナー内容</h2></div>
+  <p class="note">
+    東京A・C・Dおよび大阪Bの各日程は、基本カリキュラムに沿って進行します。同じ回の講義でも、参加者の理解度・質問内容・当日の流れに合わせて、解説／実技／症例の取り上げ方を調整。大枠は共通しつつ、毎回まったく同じ内容ではなく、より実践に活かしやすい形で進めていきます。
+  </p>
+
+  <div class="head"><span class="mark"></span><h2>受講料（税込）</h2></div>
+  <div class="fees">
+    <div class="fee full">
+      <div class="label">12回／年コース</div>
+      <div class="price">330,000<small> 円</small></div>
+      <div class="tax">税込・年間12回すべて参加可</div>
+      <div class="desc">年間を通して確実に学びたい方に。4日程（東京A・C・D／大阪B）から<strong>2つ</strong>お選びいただけます。</div>
+    </div>
+    <div class="fee">
+      <div class="label">6回／年コース</div>
+      <div class="price">198,000<small> 円</small></div>
+      <div class="tax">税込・年6回受講</div>
+      <div class="desc">受講回数を調整したい方に。4日程（東京A・C・D／大阪B）から<strong>1つ</strong>お選びいただけます。</div>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <div class="cta-lead">ご受講のお申込みはこちら</div>
+    <a class="cta-btn" href="https://docs.google.com/forms/d/1uK3wm3Az2TAp6hGWAgTkwsXp1RgXZg5JQUdU5r5MW3U/viewform" target="_blank" rel="noopener">申込みフォームへ進む</a>
+    <div class="cta-note">Googleフォームが開きます。コース・参加クラスをご選択ください。</div>
+  </div>
+
+  <footer>六層連動操法　東京7,8期 卒後セミナー</footer>
+
+</div>
+</body>
+</html>
